@@ -1,0 +1,31 @@
+{
+    "version": "1.0.0",
+    "name": "JioGauSamriddhi JioPhone App",
+    "description": "KaiOS based webapp for gauSamriddhi",
+    "subtitle": "Localization",
+    "launch_path": "/index.html",
+    "categories": ["agriculture"],
+    "icons": {
+        "56": "/icons/kaios_56.png",
+        "112": "/icons/kaios_112.png"
+    },
+    "fullscreen": true,
+    "permissions": {
+        "desktop-notification": {
+            "description": "Needed for creating system notifications."
+        }
+    },
+    "developer": {
+        "name": "jio",
+        "url": "https://www.jio.com/"
+    },
+    "type": "web",
+    "locales": {
+        "en-US": {
+            "name": "Localization",
+            "subtitle": "Localization",
+            "description": "KaiOS based webapp for gauSamriddhi"
+        }
+    },
+    "default_locale": "en-US"
+}
