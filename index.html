@@ -10,9 +10,80 @@
         />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link href="" rel="stylesheet" />
+        <link href="./assets/css/style.css" rel="stylesheet" />
     </head>
     <body>
-        Hosted app example
+        <div class="main">
+            <div class="label">Generated token will appear below</div>
+            <p id="token" class="para"></p>
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyAINhrncfsqoz3KGYy-EUpcX_aIdUHgDk4",
+                authDomain: "test-app-hosted.firebaseapp.com",
+                databaseURL: "https://test-app-hosted.firebaseio.com",
+                projectId: "test-app-hosted",
+                storageBucket: "test-app-hosted.appspot.com",
+                messagingSenderId: "808732067852",
+                appId: "1:808732067852:web:4020e40a782914de440629",
+                measurementId: "G-WWPKQD0YRC",
+            };
+            firebase.initializeApp(firebaseConfig);
+            const messaging = firebase.messaging();
+
+            function IntitalizeFireBaseMessaging() {
+                messaging
+                    .requestPermission()
+                    .then(function () {
+                        console.log("Notification Permission");
+                        return messaging.getToken();
+                    })
+                    .then(function (token) {
+                        console.log("Token : " + token);
+                        document.getElementById("token").innerHTML = token;
+                    })
+                    .catch(function (reason) {
+                        console.log(reason);
+                    });
+            }
+
+            messaging.onMessage(function (payload) {
+                console.log(payload);
+                const notificationOption = {
+                    body: payload.notification.body,
+                    icon: payload.notification.icon,
+                };
+
+                if (Notification.permission === "granted") {
+                    var notification = new Notification(
+                        payload.notification.title,
+                        notificationOption
+                    );
+
+                    notification.onclick = function (ev) {
+                        ev.preventDefault();
+                        window.open(
+                            payload.notification.click_action,
+                            "_blank"
+                        );
+                        notification.close();
+                    };
+                }
+            });
+            messaging.onTokenRefresh(function () {
+                messaging
+                    .getToken()
+                    .then(function (newtoken) {
+                        console.log("New Token : " + newtoken);
+                    })
+                    .catch(function (reason) {
+                        console.log(reason);
+                    });
+            });
+            IntitalizeFireBaseMessaging();
+        </script>
     </body>
 </html>
