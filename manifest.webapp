@@ -3,7 +3,7 @@
     "name": "JioGauSamriddhi JioPhone App",
     "description": "KaiOS based webapp for gauSamriddhi",
     "subtitle": "Localization",
-    "launch_path": "/index.html",
+    "launch_path": "/test-app-hosted//index.html",
     "categories": ["agriculture"],
     "icons": {
         "56": "/icons/kaios_56.png",
