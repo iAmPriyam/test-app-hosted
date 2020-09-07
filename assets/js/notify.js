@@ -14,6 +14,7 @@ if (addNotification) {
                 new Notification("See this", {
                     body: "This is a notification",
                 });
+                console.log("generated at 17");
             }
         } else {
             var notify = navigator.mozNotification.createNotification(
@@ -21,6 +22,7 @@ if (addNotification) {
                 "This is a notification"
             );
             notify.show();
+            console.log("generated at 25");
         }
     };
 }
