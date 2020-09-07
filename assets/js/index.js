@@ -1,7 +1,17 @@
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-navigator.serviceWorker.register("service-worker.js");
+navigator.serviceWorker
+    .register("assets/js/service-worker.js")
+    .then((register) => {
+        console.log("service worker registered", register);
+        // document
+        //     .querySelector(".label")
+        //     .insertAdjacentText("afterend", JSON.stringify(register, null, 4));
+    })
+    .catch((error) => {
+        console.log("Service worker could not be registered", error);
+    });
 serviceWorker.ready
     .then(function (registration) {
         return registration.pushManager
@@ -32,6 +42,7 @@ serviceWorker.ready
         //         subscription: subscription,
         //     }),
         console.log(subscription);
+        document.getElementById("subscription").innerHTML = subscription;
     });
 
 // document.getElementById("doIt").onclick = function () {
