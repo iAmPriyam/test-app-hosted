@@ -88,6 +88,16 @@
 //             console.log(sub.toJSON());
 //         });
 // });
+
+function calpar(txt) {
+    window.parent.sayHello(txt);
+}
+
+function button_click() {
+    console.log("clicked");
+    window.parent.document.getElementById("body").trigger("message");
+}
+
 let para = document.getElementById("token");
 
 function receive(event) {
@@ -100,6 +110,9 @@ window.addEventListener("message", receive);
 document.addEventListener("keydown", (event) => {
     console.log(para);
     console.log(event.key);
+    if (event.key === "1") {
+        window.parent.sayHello(txt);
+    }
     if (event.key === "Backspace") {
         para.innerHTML = String(para.innerHTML).slice(0, -1);
     } else if (
