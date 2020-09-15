@@ -111,7 +111,9 @@ document.addEventListener("keydown", (event) => {
     console.log(para);
     console.log(event.key);
     if (event.key === "1") {
+        let txt = "message from iframe";
         window.parent.sayHello(txt);
+        window.parent.postMessage(txt, "*");
     }
     if (event.key === "Backspace") {
         para.innerHTML = String(para.innerHTML).slice(0, -1);
