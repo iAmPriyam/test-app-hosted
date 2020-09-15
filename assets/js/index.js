@@ -88,10 +88,27 @@
 //             console.log(sub.toJSON());
 //         });
 // });
-
 let para = document.getElementById("token");
+
+function receive(event) {
+    console.log("Received Message : " + event.data);
+    para.innerHTML = "recieved a message!";
+    alert(event.data);
+}
+window.addEventListener("message", receive);
+
 document.addEventListener("keydown", (event) => {
     console.log(para);
     console.log(event.key);
-    para.innerHTML = event.key + " was pressed";
+    if (event.key === "Backspace") {
+        para.innerHTML = String(para.innerHTML).slice(0, -1);
+    } else if (
+        (event.key >= "a" && event.key <= "z") ||
+        (event.key >= "A" && event.key <= "Z") ||
+        (event.key >= "1" && event.key <= "9")
+    )
+        para.innerHTML = para.innerHTML + event.key;
+    else {
+        para.innerHTML = para.innerHTML + "\n" + event.key + "\n";
+    }
 });
