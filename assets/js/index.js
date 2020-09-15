@@ -89,15 +89,6 @@
 //         });
 // });
 
-function calpar(txt) {
-    window.parent.sayHello(txt);
-}
-
-function button_click() {
-    console.log("clicked");
-    window.parent.document.getElementById("body").trigger("message");
-}
-
 let para = document.getElementById("token");
 
 function receive(event) {
